@@ -21,6 +21,7 @@ RUN apk add --no-cache \
 RUN wget http://selenium-release.storage.googleapis.com/`echo $SELENIUM_VERSION | sed 's/\(.*\..*\)\..*/\1/g'`/selenium-server-standalone-$SELENIUM_VERSION.jar \
   -O /usr/bin/selenium.jar
 
-RUN useradd -ms /bin/sh dev
+RUN addgroup dev && \
+  adduser -D -G dev dev
 USER dev
 WORKDIR /home/dev/
