@@ -2,10 +2,9 @@ FROM node:10.9.0-alpine
 
 # This section adds support for Pact's standalone runner (based on Ruby)
 # https://github.com/pact-foundation/pact-js/issues/154
-RUN apk add --no-cache bash git zip curl wget ca-certificates
 RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 RUN wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.27-r0/glibc-2.27-r0.apk
-RUN apk add glibc-2.27-r0.apk
+RUN apk add --no-cache bash git ssh zip curl wget ca-certificates glibc-2.27-r0.apk
 
 # Add libs and runtimes needs for Selenium and Chrome headless
 ENV SELENIUM_VERSION 3.14.0
